@@ -7,5 +7,5 @@ while True:
         else:
             print("Vuosi ei ole karkausvuosi!")
 
-    except ValueError:
-        print("Syötä vain posiitiiviset kokonaisluvut")
+    except ValueError as err:
+        print(f"Error -> {err.args}")

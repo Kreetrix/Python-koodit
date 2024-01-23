@@ -12,5 +12,5 @@ while True:
         else:
             print("Virheellinen hyttiluokka")
 
-    except ValueError:
-        print("Joku meni pieleen")
+    except ValueError as err:
+        print(f"Error -> {err.args}")

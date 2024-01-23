@@ -24,5 +24,5 @@ while True:
             hemoglobin_calc(female_hemoglobin)
             break
 
-    except ValueError:
-        print("Joku meni pieleen")
+    except ValueError as err:
+        print(f"Error -> {err.args}")
