@@ -1,15 +1,18 @@
+def prime_number_calc(value: int) -> bool:
+    step_1 = value % (1 and value) == 0
+    # Luultavasti ei ole kovin optimisoitu vaihtoehto, mutta käytin nyt tätä sympy-kirjaston sijaan
+    for i in range(2, value):
+        if value != i and value % i == 0:
+            return False
+    if step_1:
+        return True
 
 
 while True:
     try:
         input_value = int(input("Syötä kokonaisluku -> "))
 
-        #test = lambda i, a: (i % i == 0)
-        #print(test(10))
-        x = 21 / 4
-        print(x)
-
-        if input_value % (1 and input_value) == 0:
+        if prime_number_calc(input_value):
             print("Luku on alkuluku")
         else:
             print("Luku ei ole alkuluku")

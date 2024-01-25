@@ -1,6 +1,6 @@
 while True:
     try:
-        value = str(input("Syötä laivan hyttiluokka: \n")).capitalize()
+        value: str = str(input("Syötä laivan hyttiluokka: \n")).upper()
         if value == "LUX":
             print("LUX on parvekkeellinen hytti yläkannella.")
         elif value == "A":
