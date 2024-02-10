@@ -11,7 +11,7 @@ def month_to_season(month: int) -> str:
 
 while True:
     try:
-        month_num = int(input("Input month as a number between 1 to 12 -> "))
+        month_num = int(input("Input month as a number between 1 and 12 -> "))
         if 12 >= month_num > 0:
             season = month_to_season(month_num)
             print(f"Season -> {season}")
