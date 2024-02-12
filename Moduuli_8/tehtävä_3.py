@@ -32,18 +32,24 @@ def fetch_one(document: str):
 
 def calculate_distance(ICAO_1: str, ICAO_2: str):
     result_1 = fetch_one(f"SELECT airport.latitude_deg, airport.longitude_deg FROM airport where ident='{ICAO_1}'")
-    formatted_result = {'latitude_deg': result_1[0], 'longitude_deg': result_1[1]}
-    distance_1 = Distance
-    distance_1.latitude = formatted_result['latitude_deg']
-    distance_1.longitude = formatted_result['longitude_deg']
-    airport_1 = (distance_1.latitude, distance_1.longitude)
+    if result_1 is not None:
+        formatted_result = {'latitude_deg': result_1[0], 'longitude_deg': result_1[1]}
+        distance_1 = Distance
+        distance_1.latitude = formatted_result['latitude_deg']
+        distance_1.longitude = formatted_result['longitude_deg']
+        airport_1 = (distance_1.latitude, distance_1.longitude)
+    else:
+        return "First airport ICAO code not found"
 
     result_2 = fetch_one(f"SELECT airport.latitude_deg, airport.longitude_deg FROM airport where ident='{ICAO_2}'")
-    formatted_result = {'latitude_deg': result_2[0], 'longitude_deg': result_2[1]}
-    distance_2 = Distance
-    distance_2.latitude = formatted_result['latitude_deg']
-    distance_2.longitude = formatted_result['longitude_deg']
-    airport_2 = (distance_2.latitude, distance_2.longitude)
+    if result_2 is not None:
+        formatted_result = {'latitude_deg': result_2[0], 'longitude_deg': result_2[1]}
+        distance_2 = Distance
+        distance_2.latitude = formatted_result['latitude_deg']
+        distance_2.longitude = formatted_result['longitude_deg']
+        airport_2 = (distance_2.latitude, distance_2.longitude)
+    else:
+        return "Second airport ICAO code not found"
 
     return distance.distance(airport_1, airport_2).km
 
