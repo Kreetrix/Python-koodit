@@ -1,8 +1,16 @@
 import requests
+import os
+from dotenv import load_dotenv
+from pathlib import Path
 
+dotenv_path = Path('.env')  # path to .env file
+load_dotenv(dotenv_path=dotenv_path)  # load the .env file
 
-api = "b6918ea857c69fc27fd09fb8c40568e4"
-x = requests.get(f'https://api.openweathermap.org/data/2.5/weather?q=Espoo&appid={api}')
+TOKEN = os.getenv('TOKEN')
+units = 'metric'
 
+city = input("Input your city name: ")
+weather = requests.get(f'https://api.openweathermap.org/data/2.5/weather?q={city}&appid={TOKEN}&units={units}')
 
-print(x.text)
+print(weather.text)
+print(f'Temperature -> {weather.json()['main']['temp']}')
