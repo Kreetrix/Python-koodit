@@ -10,7 +10,7 @@ function calc() {
     let success = 0;
     for (let i = 0; i < 10000; i++) {
         count++;
-        let res = 0;
+        let res = 0;с
         for (let i = 0; i < dice_num; i++) {
             res += dice[Math.floor(dice.length * Math.random())];
         }

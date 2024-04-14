@@ -5,7 +5,6 @@ let end = parseInt(prompt("Enter the end year"));
 
 
 const parent = document.querySelector("#ul");
-// const li = document.createElement("li");
 
 const roll = () => {
     const years = end - start;
