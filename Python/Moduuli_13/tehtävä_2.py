@@ -4,8 +4,6 @@ import mysql.connector
 
 app = Flask(__name__)
 
-
-
 connection = mysql.connector.connect(
     host='127.0.0.1',
     port=3306,
@@ -14,6 +12,7 @@ connection = mysql.connector.connect(
     password='metroRoot',
     autocommit=True
 )
+
 
 def find_airport(ICAO: str):
     document = f"SELECT airport.name, airport.municipality FROM airport where ident='{ICAO}'"
@@ -24,6 +23,7 @@ def find_airport(ICAO: str):
     if cursor.rowcount > 0:
         return result[0]
     return None
+
 
 @app.route('/kenttä/<code>')
 def main(code):
