@@ -27,6 +27,12 @@ function Time(duration) {
 
 form.addEventListener('submit', async (e) => {
     e.preventDefault();
+
+    if(sub_key === ''){
+        alert("NO SUBSCRIPTION KEY FOUND!!!! I haven't uploaded it here, you should use your own");
+    }
+
+
     const input = form.querySelector('#start');
     let value = input.value;
 
