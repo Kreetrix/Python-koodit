@@ -29,7 +29,7 @@ form.addEventListener('submit', async (e) => {
     e.preventDefault();
 
     if(sub_key === ''){
-        alert("NO SUBSCRIPTION KEY FOUND!!!! I haven't uploaded it here, you should use your own");
+        alert("NO SUBSCRIPTION KEY FOUND!!!! I didn't upload it here, you should use your own");
     }
 
 
@@ -39,16 +39,12 @@ form.addEventListener('submit', async (e) => {
     let res = await fetch(`https://api.digitransit.fi/geocoding/v1/search?digitransit-subscription-key=${sub_key}&text=${value}&size=1`)
     res = await res.json()
     let coordinates = res.features[0].geometry.coordinates
-    console.log(coordinates)
 
     let trip = await getRoute({latitude: coordinates[1], longitude: coordinates[0]}, {latitude: 60.223876, longitude: 24.758061})
-    console.log(trip)
-    const trip_s = document.querySelector("#st");
-    const trip_start = document.createTextNode(Time(trip[0].startTime));
-    trip_s.appendChild(trip_start);
-    const trip_e = document.querySelector("#end");
-    const trip_end = document.createTextNode(Time(trip[trip.length - 1].endTime));
-    trip_e.appendChild(trip_end);
+    const trip_start = document.querySelector("#st");
+    trip_start.textContent = `Starting time: ${Time(trip[0].startTime)}`;
+    const trip_end = document.querySelector("#end");
+    trip_end.textContent = `Ending time: ${Time(trip[trip.length - 1].endTime)}`;
 })
 
 
